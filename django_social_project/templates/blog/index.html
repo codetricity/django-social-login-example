@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
 
-  <title>My fake blog!</title>
+  <title>Oppkey Host Management</title>
 
   <link
     rel="stylesheet"
@@ -24,7 +24,7 @@
       <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
     {% else %}
       <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
-        Login
+        Google Login
       </a>
     {% endif %}
   </div>
