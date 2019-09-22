@@ -5,7 +5,7 @@
 
 ## Usage
 
-Most edit settings.py and include credentials for social logins.
+Must edit settings.py and include credentials for social logins.
 
 ## Dev Notes
 

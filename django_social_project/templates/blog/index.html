@@ -13,9 +13,14 @@
 </head>
 <body>
   <div class="jumbotron">
-    <h1>My fake blog!</h1>
+    <h1>Oppkey Host Management</h1>
     {% if user.is_authenticated %}
-      <p>Logged as {{ user.username }}</p>
+      <p>Logged as {{ user.email }}</p>
+      <p>with username {{ user.username }}</p>
+      <h2><a href="/admin/">Go To Management Console</a></h2>
+
+      <hr>
+
       <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
     {% else %}
       <a class="btn btn-primary" href="{% url 'social:begin' 'google-oauth2' %}">
@@ -29,7 +34,7 @@
     <div>
       <h2>{{ post.title }}</h2>
       <p>{{ post.content }}</p>
-      <p>Posted by {{ post.user.username }} | {{ post.date }}</p>
+      <p>Posted by {{ post.user.email }} | {{ post.date }}</p>
     </div>
   {% endfor %}
   </div>
