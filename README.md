@@ -5,17 +5,40 @@
 
 ## Usage
 
-Must edit settings.py and include credentials for social logins.
+Must edit `local_settings.py` and include credentials for social logins.
 
-## Install Social Auth
+## Setup
+
+### Install Social Auth
 
    pip install social-auth-app-django
 
-## console.developers.google.com
+### console.developers.google.com
+
+Go to https//console.developers.google.com and create new credentials.
+
+![Create new credentials](doc/image/google-credentials.png)
+
+![Select Credentials](doc/image/select-credentials.png)
+
+![Select Oauth](doc/image/auth.png)
+
+Select Web application.
+
+![select web app](doc/image/select-web-app.png)
 
 ![Google Credentials](doc/image/credentials.png)
 
-## Settings.py
+Under Authorized redirect URIs, add the following:
+
+    http://localhost:8000/complete/google-oauth2/
+    https://project-domain.com/complete/google-oauth2/
+
+Replace `project-domain.com` with the URL of your project server.
+
+
+
+### Settings.py
 
     # social auth configuration
 
@@ -46,14 +69,14 @@ create a new file called `local_settings.py` and insert the following at the bot
     except ImportError:
         pass
 
-## local_settings.py
+### local_settings.py
 
 Put the values from Google into the constants below.
 
     SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'GOOGLE_KEY'
     SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'SECRET'
 
-## urls.py
+### urls.py
 
     from django.contrib.auth.views import LogoutView
     ...
@@ -71,12 +94,12 @@ Put the values from Google into the constants below.
     ]
 
 
-## views.py
+### views.py
 
     def manage(request):
         return render(request, 'manage.html')
 
-## template manage.html
+### template manage.html
 
 The snippet below uses Bootstrap for styling.
 
@@ -100,12 +123,12 @@ The snippet below uses Bootstrap for styling.
             {% endif %}
         </div>
 
-## make and migrate models
+### make and migrate models
 
    $ python manage.py makemigrations
    $ python manage.py migrate
 
-## run server and test
+### run server and test
 
    $ python manage.py runserver
 
@@ -114,10 +137,3 @@ The snippet below uses Bootstrap for styling.
 ![google login](doc/image/google_login.png)
 
 ![logged in](doc/image/logged_in.png)
-
-## Credits
-
-Originally based on an [article](https://medium.com/trabe/oauth-authentication-in-django-with-social-auth-c67a002479c1), 
-but updated for Django 2.2 by 
-Martin Lamas
-
